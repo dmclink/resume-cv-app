@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import ExperienceInputFields from './ExperienceInputFields.jsx';
 
-function ExperienceInputSection({ handleChange }) {
+function ExperienceInputSection({ handleRemove, handleChange }) {
 	const [count, setCount] = useState(1);
 	const experienceFields = [];
 
@@ -10,10 +10,11 @@ function ExperienceInputSection({ handleChange }) {
 	}
 	function decrement() {
 		setCount(count - 1);
+		handleRemove();
 	}
 
 	for (let i = 0; i < count; i++) {
-		experienceFields.push(<ExperienceInputFields i={i + 1} onChange={handleChange} />);
+		experienceFields.push(<ExperienceInputFields i={i + 1} handleChange={handleChange} />);
 	}
 
 	return (

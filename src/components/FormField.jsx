@@ -1,9 +1,12 @@
-function FormField({ onChange, label = '', id = '', type = '' }) {
+function FormField({ name, idx, onChange, label = '', id = '', type = '' }) {
 	let t = 'text';
 
 	switch (type) {
 		case 'date':
 			t = 'date';
+			break;
+		case 'textarea':
+			t = 'textarea';
 			break;
 		case '':
 			break;
@@ -15,7 +18,11 @@ function FormField({ onChange, label = '', id = '', type = '' }) {
 		<>
 			<label>
 				{label}
-				<input onChange={onChange} name={id} id={id} type={t} />
+				{t === 'textarea' ? (
+					<textarea idx={idx} onChange={onChange} name={name} id={id}></textarea>
+				) : (
+					<input idx={idx} onChange={onChange} name={name} id={id} type={t} />
+				)}
 			</label>
 		</>
 	);
