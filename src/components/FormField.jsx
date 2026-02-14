@@ -1,4 +1,4 @@
-function FormField({ label = '', id = '', type = '' }) {
+function FormField({ onChange, label = '', id = '', type = '' }) {
 	let t = 'text';
 
 	switch (type) {
@@ -15,7 +15,7 @@ function FormField({ label = '', id = '', type = '' }) {
 		<>
 			<label>
 				{label}
-				<input name={id} id={id} type={t} />
+				<input onChange={onChange} name={id} id={id} type={t} />
 			</label>
 		</>
 	);

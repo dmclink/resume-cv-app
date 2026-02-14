@@ -1,0 +1,26 @@
+.full-name {
+	text-align: center;
+	font-size: 2rem;
+}
+
+.page {
+	padding-inline: 1in;
+	padding-block: 0.5in;
+	line-height: 1.1;
+	text-align: left;
+	color: black;
+	background-color: #fff;
+	height: 11.69in;
+	width: 8.26in;
+	transform: scale(0.8);
+}
+
+.personal-info {
+	display: flex;
+	gap: 0.5rem;
+	justify-content: center;
+	flex-wrap: wrap;
+	& > * {
+		text-wrap: nowrap;
+	}
+}

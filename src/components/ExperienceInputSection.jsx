@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import ExperienceInputFields from './ExperienceInputFields.jsx';
 
-function ExperienceInputSection() {
+function ExperienceInputSection({ handleChange }) {
 	const [count, setCount] = useState(1);
 	const experienceFields = [];
 
@@ -13,15 +13,15 @@ function ExperienceInputSection() {
 	}
 
 	for (let i = 0; i < count; i++) {
-		experienceFields.push(<ExperienceInputFields i={i + 1} />);
+		experienceFields.push(<ExperienceInputFields i={i + 1} onChange={handleChange} />);
 	}
 
 	return (
 		<>
 			<h2>Work Experience</h2>
-			<div className="experience-fields" id="experience-fields">
+			<form className="work-experience-form" id="work-experience-form">
 				{experienceFields}
-			</div>
+			</form>
 			<button type="button" onClick={increment}>
 				Add Another
 			</button>

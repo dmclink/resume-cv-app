@@ -19,9 +19,9 @@ function EducationInputSection() {
 	return (
 		<>
 			<h2>Education Information</h2>
-			<div className="education-fields" id="education-fields">
+			<form className="education-form" id="education-form">
 				{educationFields}
-			</div>
+			</form>
 			<button type="button" onClick={increment}>
 				Add Another
 			</button>
