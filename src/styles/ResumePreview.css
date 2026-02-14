@@ -22,7 +22,8 @@
 	flex-wrap: wrap;
 }
 
-.work-section-heading {
+.work-section-heading,
+.education-section-heading {
 	width: 100%;
 	border-bottom: 1px solid black;
 }

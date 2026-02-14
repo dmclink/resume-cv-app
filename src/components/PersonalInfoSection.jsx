@@ -6,8 +6,6 @@ function PersonalInfoSection({ data }) {
 	data.linkedin && personalInfo.push({ info: data.linkedin, isLink: true });
 	data.phone && personalInfo.push({ info: data.phone, isLink: false });
 
-	console.log(data);
-
 	return (
 		<section className="personal-info-section">
 			<h1 className="full-name">{data.name}</h1>

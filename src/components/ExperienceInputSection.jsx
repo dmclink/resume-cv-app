@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import ExperienceInputFields from './ExperienceInputFields.jsx';
 
-function ExperienceInputSection({ handleRemove, handleChange }) {
+function ExperienceInputSection({ handleAdd, handleRemove, handleChange }) {
 	const [count, setCount] = useState(1);
 	const experienceFields = [];
 
 	function increment() {
 		setCount(count + 1);
+		handleAdd();
 	}
 	function decrement() {
 		setCount(count - 1);

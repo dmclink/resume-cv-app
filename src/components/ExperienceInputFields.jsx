@@ -24,10 +24,10 @@ function ExperienceInputFields({ i, handleChange }) {
 			<FormField
 				onChange={handleChange}
 				idx={i - 1}
-				label="Description and Achievements:"
-				name={'workDescription'}
-				id={'work-description' + i}
-				type="textarea"
+				label="Responsibilites:"
+				name={'workResponsibilities'}
+				id={'work-responsibilities' + i}
+				type=""
 			/>
 		</>
 	);
