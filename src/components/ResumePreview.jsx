@@ -1,5 +1,4 @@
 import '../styles/ResumePreview.css';
-import { useState } from 'react';
 import PersonalInfoSection from './PersonalInfoSection.jsx';
 import ExperienceSection from './ExperienceSection.jsx';
 

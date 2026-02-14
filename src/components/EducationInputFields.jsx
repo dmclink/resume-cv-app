@@ -2,7 +2,7 @@ import FormField from './FormField';
 
 function EducationInputFields({ i }) {
 	return (
-		<div className="education-input-field" key={crypto.randomUUID()}>
+		<div className="education-input-field">
 			<h3>Education {i}</h3>
 			<FormField label="School Name:" id={'school-name' + i} />
 			<FormField label="Degree or Certificate Name:" id={'school-degree-name' + i} />
