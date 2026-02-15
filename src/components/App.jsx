@@ -5,8 +5,11 @@ import InfoInputSection from './InfoInputSection.jsx';
 import EducationInputSection from './EducationInputSection.jsx';
 import ExperienceInputSection from './ExperienceInputSection.jsx';
 import ResumePreview from './ResumePreview.jsx';
+import SkillsInputSection from './SkillsInputSection.jsx';
+import ProfessionalSummaryInputSection from './ProfessionalSummaryInputSection.jsx';
 
 function App() {
+	const [professionalSummary, setProfessionalSummary] = useState('');
 	const [educationData, setEducationData] = useState({
 		schools: [
 			{
@@ -37,6 +40,8 @@ function App() {
 		linkedin: '',
 		phone: '',
 	});
+
+	const [skillsData, setSkillsData] = useState('');
 
 	function handlePersonalInfoChange(e) {
 		const v = e.target.value;
@@ -105,11 +110,24 @@ function App() {
 		});
 	}
 
+	function handleSkillsChange(e) {
+		const v = e.target.value;
+
+		setSkillsData(v);
+	}
+	function handleProfessionalSummaryChange(e) {
+		const v = e.target.value;
+		console.log(v);
+
+		setProfessionalSummary(v);
+	}
+
 	// TODO: make each section wrapped with a form element and id to access with new FormData() when updating
 	return (
 		<>
 			<h1>Resume Builder</h1>
 			<InfoInputSection handlePersonalInfoChange={handlePersonalInfoChange} />
+			<ProfessionalSummaryInputSection handleChange={handleProfessionalSummaryChange} />
 			<ExperienceInputSection
 				handleAdd={handleWorkExperienceAdd}
 				handleRemove={handleWorkExperienceRemove}
@@ -120,11 +138,14 @@ function App() {
 				handleRemove={handleEducationRemove}
 				handleChange={handleEducationChange}
 			/>
+			<SkillsInputSection handleChange={handleSkillsChange} />
 			<h2>Preview</h2>
 			<ResumePreview
 				educationData={educationData}
 				personalInfoData={personalInfoData}
 				workData={workData}
+				skillsData={skillsData}
+				professionalSummaryData={professionalSummary}
 				className="resume-preview"
 			/>
 		</>

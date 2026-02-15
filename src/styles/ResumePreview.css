@@ -13,6 +13,7 @@
 	height: 11.69in;
 	width: 8.26in;
 	transform: scale(0.8);
+	font-size: 12px;
 }
 
 .personal-info {
@@ -23,7 +24,9 @@
 }
 
 .work-section-heading,
-.education-section-heading {
+.education-section-heading,
+.skills-section-heading,
+.professional-summary-heading {
 	width: 100%;
 	border-bottom: 1px solid black;
 }
@@ -38,7 +41,6 @@
 	& > * {
 		text-wrap: nowrap;
 		font-weight: bold;
-		font-size: 12px;
 	}
 }
 
