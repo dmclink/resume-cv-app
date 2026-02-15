@@ -27,15 +27,22 @@
 	width: 100%;
 	border-bottom: 1px solid black;
 }
-.work-entry {
+.work-entry,
+.education-entry {
 	margin-bottom: 0.6rem;
 }
-.work-header {
-	display: flex;
-	justify-content: space-between;
+.work-header,
+.education-header {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
 	& > * {
 		text-wrap: nowrap;
 		font-weight: bold;
-		font-size: 1rem;
+		font-size: 12px;
 	}
+}
+
+.education-honors {
+	font-weight: normal;
+	font-style: italic;
 }
