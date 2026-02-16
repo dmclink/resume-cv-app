@@ -9,7 +9,7 @@ function ExperienceSection({ data }) {
 					<p className="work-title">{entry.workTitle}</p>
 					<p className="work-date">{formatDates(entry.workFrom, entry.workTo)}</p>
 				</header>
-				<div className="work-description">{buildDescription(entry.workDescription)}</div>
+				<div className="work-description">{buildDescription(entry.workResponsibilities)}</div>
 			</article>
 		);
 	});
