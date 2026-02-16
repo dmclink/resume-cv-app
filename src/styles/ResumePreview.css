@@ -19,6 +19,7 @@
 
 	@media print {
 		transform: scale(1);
+		height: min-content;
 	}
 }
 
