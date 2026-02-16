@@ -19,7 +19,7 @@ function FormField({ name, idx, onChange, label = '', id = '', type = '' }) {
 			<label>
 				{label}
 				{t === 'textarea' ? (
-					<textarea idx={idx} onChange={onChange} name={name} id={id}></textarea>
+					<textarea rows="5" idx={idx} onChange={onChange} name={name} id={id}></textarea>
 				) : (
 					<input idx={idx} onChange={onChange} name={name} id={id} type={t} />
 				)}

@@ -27,7 +27,7 @@ function ExperienceInputFields({ i, handleChange }) {
 				label="Responsibilites:"
 				name={'workResponsibilities'}
 				id={'work-responsibilities' + i}
-				type=""
+				type="textarea"
 			/>
 		</>
 	);

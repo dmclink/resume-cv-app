@@ -44,7 +44,6 @@ function App() {
 		linkedin: '',
 		phone: '',
 	});
-
 	const [skillsData, setSkillsData] = useState('');
 
 	function handlePersonalInfoChange(e) {
@@ -156,29 +155,47 @@ function App() {
 		setProfessionalSummary(v);
 	}
 
+	function handlePreviewControlsChange(e) {
+		const v = e.target.value;
+		const name = e.target.name;
+
+		setPreviewConfig((prevData) => {
+			const newData = structuredClone(prevData);
+			newData[name] = v;
+
+			return newData;
+		});
+	}
+
 	// TODO: add a projects section similar to work experience but without dates, let add and remove
 	return (
-		<>
-			<h1>Resume Builder</h1>
+		<div className="app">
+			<h1 className="title">Resume Builder</h1>
+			<h2 className="input-heading">Personal Information</h2>
 			<InfoInputSection handlePersonalInfoChange={handlePersonalInfoChange} />
+			<h2 className="input-heading">Professional Summary</h2>
 			<ProfessionalSummaryInputSection handleChange={handleProfessionalSummaryChange} />
+			<h2 className="input-heading">Personal Projects</h2>
 			<ProjectsInput
 				handleAdd={handleProjectAdd}
 				handleRemove={handleProjectRemove}
 				handleChange={handleProjectChange}
 			/>
+			<h2 className="input-heading">Work Experience</h2>
 			<ExperienceInputSection
 				handleAdd={handleWorkExperienceAdd}
 				handleRemove={handleWorkExperienceRemove}
 				handleChange={handleWorkExperienceChange}
 			/>
+			<h2 className="input-heading">Education Information</h2>
 			<EducationInputSection
 				handleAdd={handleEducationAdd}
 				handleRemove={handleEducationRemove}
 				handleChange={handleEducationChange}
 			/>
+			<h2 className="input-heading">Skills</h2>
 			<SkillsInputSection handleChange={handleSkillsChange} />
-			<h2>Preview</h2>
+			<h2 className="input-heading">Preview</h2>
 			<ResumePreview
 				educationData={educationData}
 				personalInfoData={personalInfoData}
@@ -188,7 +205,7 @@ function App() {
 				projectData={projectData}
 				className="resume-preview"
 			/>
-		</>
+		</div>
 	);
 }
 

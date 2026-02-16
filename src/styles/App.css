@@ -61,3 +61,13 @@ h6 {
 #__next {
 	isolation: isolate;
 }
+
+.app {
+	margin: 0 auto;
+	max-width: 70ch;
+}
+
+.input-heading,
+.title {
+	text-align: center;
+}

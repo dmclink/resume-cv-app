@@ -4,6 +4,7 @@
 }
 
 .page {
+	font-family: var(--font-family, Arial, Helvetica, Arimo, 'DejaVu Sans', sans-serif);
 	padding-inline: 1in;
 	padding-block: 0.5in;
 	line-height: 1.1;
@@ -12,8 +13,9 @@
 	background-color: #fff;
 	height: 11.69in;
 	width: 8.26in;
+	transform-origin: 0 0;
 	transform: scale(0.8);
-	font-size: 12px;
+	font-size: var(--font-size, 12px);
 }
 
 .personal-info {
@@ -28,8 +30,13 @@
 .skills-section-heading,
 .professional-summary-heading,
 .projects-section-heading {
+	font-family: var(--heading-font-family, Arial, Helvetica, Arimo, 'DejaVu Sans', sans-serif);
+	font-size: var(--heading-font-size, 12px);
 	width: 100%;
 	border-bottom: 1px solid black;
+	&::first-letter {
+		font-size: 1.1em;
+	}
 }
 .work-entry,
 .education-entry {
@@ -53,4 +60,17 @@
 .education-honors {
 	font-weight: normal;
 	font-style: italic;
+}
+
+textarea {
+	resize: vertical;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	& label {
+		display: flex;
+		flex-direction: column;
+	}
 }

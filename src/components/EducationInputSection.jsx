@@ -20,7 +20,6 @@ function EducationInputSection({ handleAdd, handleRemove, handleChange }) {
 
 	return (
 		<>
-			<h2>Education Information</h2>
 			<form className="education-form" id="education-form">
 				{educationFields}
 			</form>

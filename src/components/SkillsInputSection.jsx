@@ -2,7 +2,6 @@ import FormField from './FormField';
 function SkillsInputSection({ handleChange }) {
 	return (
 		<>
-			<h2>Skills</h2>
 			<form className="skills-form" id="skills-form">
 				<FormField
 					label="Skills:"

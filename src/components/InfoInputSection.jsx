@@ -2,7 +2,6 @@ import FormField from './FormField.jsx';
 function InfoInputSection({ handlePersonalInfoChange }) {
 	return (
 		<>
-			<h2>Personal Information</h2>
 			<form id="personal-info-form">
 				<FormField onChange={handlePersonalInfoChange} label="Name:" id="name" name="name" />
 				<FormField onChange={handlePersonalInfoChange} label="Location:" id="location" name="location" />

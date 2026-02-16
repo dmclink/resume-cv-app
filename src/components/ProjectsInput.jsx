@@ -21,7 +21,6 @@ function ProjectsInput({ handleChange, handleAdd, handleRemove }) {
 
 	return (
 		<>
-			<h2>Personal Projects</h2>
 			<form className="projects-form" id="projects-form">
 				{projectFields}
 			</form>

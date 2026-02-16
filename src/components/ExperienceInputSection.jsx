@@ -20,7 +20,6 @@ function ExperienceInputSection({ handleAdd, handleRemove, handleChange }) {
 
 	return (
 		<>
-			<h2>Work Experience</h2>
 			<form className="work-experience-form" id="work-experience-form">
 				{experienceFields}
 			</form>
