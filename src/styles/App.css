@@ -71,3 +71,18 @@ h6 {
 .title {
 	text-align: center;
 }
+
+textarea {
+	resize: vertical;
+}
+
+form {
+	display: flex;
+	flex-direction: column;
+	gap: 0.4rem;
+	margin-bottom: 1rem;
+	& label {
+		display: flex;
+		flex-direction: column;
+	}
+}

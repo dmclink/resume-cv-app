@@ -16,6 +16,10 @@
 	transform-origin: 0 0;
 	transform: scale(0.8);
 	font-size: var(--font-size, 12px);
+
+	@media print {
+		transform: scale(1);
+	}
 }
 
 .personal-info {
@@ -60,17 +64,4 @@
 .education-honors {
 	font-weight: normal;
 	font-style: italic;
-}
-
-textarea {
-	resize: vertical;
-}
-
-form {
-	display: flex;
-	flex-direction: column;
-	& label {
-		display: flex;
-		flex-direction: column;
-	}
 }
