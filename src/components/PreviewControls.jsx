@@ -1,3 +1,4 @@
+import FormField from './FormField';
 function PreviewControls({ handleChange }) {
 	return (
 		<form id="preview-controls-form">
@@ -49,6 +50,14 @@ function PreviewControls({ handleChange }) {
 					<option value="Times New Roman, Times, Georgia, serif">Times New Roman</option>
 				</select>
 			</label>
+			<FormField
+				name="lineHeight"
+				label="Line Height:"
+				type="number"
+				step="0.1"
+				defaultValue="1.1"
+				onChange={handleChange}
+			/>
 		</form>
 	);
 }

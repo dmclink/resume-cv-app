@@ -21,6 +21,7 @@ function ResumePreview({
 		headingFontSize: '12px',
 		fontFamily: 'Arial, Helvetica, sans-serif',
 		headingFontFamily: 'Arial, Helvetica, sans-serif',
+		lineHeight: '1.1',
 	});
 
 	function handleControlsChange(e) {
@@ -45,6 +46,7 @@ function ResumePreview({
 					'--heading-font-size': previewConfig.headingFontSize,
 					'--font-family': previewConfig.fontFamily,
 					'--heading-font-family': previewConfig.headingFontFamily,
+					'lineHeight': previewConfig.lineHeight,
 				}}
 			>
 				<PersonalInfoSection data={personalInfoData} />
