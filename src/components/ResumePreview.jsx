@@ -1,5 +1,7 @@
 import '../styles/ResumePreview.css';
-import { useState } from 'react';
+import { useState, useRef } from 'react';
+import { useReactToPrint } from 'react-to-print';
+
 import PersonalInfoSection from './PersonalInfoSection.jsx';
 import ExperienceSection from './ExperienceSection.jsx';
 import EducationSection from './EducationSection.jsx';
@@ -36,10 +38,15 @@ function ResumePreview({
 		});
 	}
 
+	const contentRef = useRef(null);
+	const reactToPrintFn = useReactToPrint({ contentRef });
+
 	return (
 		<>
 			<PreviewControls handleChange={handleControlsChange} />
+			<button onClick={reactToPrintFn}>Print</button>
 			<div
+				ref={contentRef}
 				className="page"
 				style={{
 					'--font-size': previewConfig.fontSize,
