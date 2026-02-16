@@ -7,9 +7,13 @@ import ExperienceInputSection from './ExperienceInputSection.jsx';
 import ResumePreview from './ResumePreview.jsx';
 import SkillsInputSection from './SkillsInputSection.jsx';
 import ProfessionalSummaryInputSection from './ProfessionalSummaryInputSection.jsx';
+import ProjectsInput from './ProjectsInput.jsx';
 
 function App() {
 	const [professionalSummary, setProfessionalSummary] = useState('');
+	const [projectData, setProjectData] = useState({
+		projects: [{ projectName: '', projectLink: '', projectDescription: '' }],
+	});
 	const [educationData, setEducationData] = useState({
 		schools: [
 			{
@@ -80,6 +84,36 @@ function App() {
 		});
 	}
 
+	function handleProjectChange(e) {
+		const name = e.target.name;
+		const v = e.target.value;
+		const idx = Number(e.target.getAttribute('idx'));
+
+		setProjectData((prevData) => {
+			const newData = structuredClone(prevData);
+			newData.projects[idx][name] = v;
+			return newData;
+		});
+	}
+
+	function handleProjectRemove() {
+		setProjectData((prevData) => {
+			const newData = structuredClone(prevData);
+			newData.projects.pop();
+
+			return newData;
+		});
+	}
+
+	function handleProjectAdd() {
+		setProjectData((prevData) => {
+			const newData = structuredClone(prevData);
+			newData.projects.push({});
+
+			return newData;
+		});
+	}
+
 	function handleEducationChange(e) {
 		const name = e.target.name;
 		const v = e.target.value;
@@ -115,19 +149,24 @@ function App() {
 
 		setSkillsData(v);
 	}
+
 	function handleProfessionalSummaryChange(e) {
 		const v = e.target.value;
-		console.log(v);
 
 		setProfessionalSummary(v);
 	}
 
-	// TODO: make each section wrapped with a form element and id to access with new FormData() when updating
+	// TODO: add a projects section similar to work experience but without dates, let add and remove
 	return (
 		<>
 			<h1>Resume Builder</h1>
 			<InfoInputSection handlePersonalInfoChange={handlePersonalInfoChange} />
 			<ProfessionalSummaryInputSection handleChange={handleProfessionalSummaryChange} />
+			<ProjectsInput
+				handleAdd={handleProjectAdd}
+				handleRemove={handleProjectRemove}
+				handleChange={handleProjectChange}
+			/>
 			<ExperienceInputSection
 				handleAdd={handleWorkExperienceAdd}
 				handleRemove={handleWorkExperienceRemove}
@@ -146,6 +185,7 @@ function App() {
 				workData={workData}
 				skillsData={skillsData}
 				professionalSummaryData={professionalSummary}
+				projectData={projectData}
 				className="resume-preview"
 			/>
 		</>

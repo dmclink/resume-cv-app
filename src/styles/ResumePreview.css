@@ -26,7 +26,8 @@
 .work-section-heading,
 .education-section-heading,
 .skills-section-heading,
-.professional-summary-heading {
+.professional-summary-heading,
+.projects-section-heading {
 	width: 100%;
 	border-bottom: 1px solid black;
 }
@@ -42,6 +43,11 @@
 		text-wrap: nowrap;
 		font-weight: bold;
 	}
+}
+
+.project-name-span {
+	text-wrap: nowrap;
+	font-weight: bold;
 }
 
 .education-honors {
