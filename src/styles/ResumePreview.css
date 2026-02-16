@@ -55,6 +55,15 @@
 		text-wrap: nowrap;
 		font-weight: bold;
 	}
+	& > *:nth-child(1) {
+		text-align: left;
+	}
+	& > *:nth-child(2) {
+		text-align: center;
+	}
+	& > *:nth-child(3) {
+		text-align: right;
+	}
 }
 
 .project-name-span {
@@ -65,4 +74,8 @@
 .education-honors {
 	font-weight: normal;
 	font-style: italic;
+}
+
+section {
+	margin-bottom: 0.5rem;
 }
