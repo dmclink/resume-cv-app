@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { setStateFn, setStateNestedArrayFn, setStateNestedArrayAdd, setStateNestedArrayRemove } from '../utils.jsx';
 import '../styles/App.css';
 import FormField from './FormField.jsx';
 import InfoInputSection from './InfoInputSection.jsx';
@@ -8,60 +9,6 @@ import ResumePreview from './ResumePreview.jsx';
 import SkillsInputSection from './SkillsInputSection.jsx';
 import ProfessionalSummaryInputSection from './ProfessionalSummaryInputSection.jsx';
 import ProjectsInput from './ProjectsInput.jsx';
-
-function setStateFn(setFunction) {
-	return function (e) {
-		const name = e.target.name;
-		const v = e.target.value;
-
-		setFunction((prevData) => {
-			const newData = structuredClone(prevData);
-			newData[name] = v;
-			return newData;
-		});
-	};
-}
-
-function setStateNestedArrayFn(setFunction, arrayFieldName) {
-	return function (e) {
-		const name = e.target.name;
-		const v = e.target.value;
-		const idx = Number(e.target.getAttribute('idx'));
-
-		setFunction((prevData) => {
-			const newData = structuredClone(prevData);
-			if (!e.target.getAttribute('idx')) {
-				newData[name] = v;
-				return newData;
-			}
-
-			newData[arrayFieldName][idx][name] = v;
-			return newData;
-		});
-	};
-}
-
-function setStateNestedArrayRemove(setFunction, arrayFieldName) {
-	return function () {
-		setFunction((prevData) => {
-			const newData = structuredClone(prevData);
-			newData[arrayFieldName].pop();
-
-			return newData;
-		});
-	};
-}
-
-function setStateNestedArrayAdd(setFunction, arrayFieldName) {
-	return function () {
-		setFunction((prevData) => {
-			const newData = structuredClone(prevData);
-			newData[arrayFieldName].push({});
-
-			return newData;
-		});
-	};
-}
 
 function App() {
 	const [professionalSummary, setProfessionalSummary] = useState({
@@ -126,7 +73,6 @@ function App() {
 
 	const handleSkillsChange = setStateFn(setSkillsData);
 
-	// TODO: add a projects section similar to work experience but without dates, let add and remove
 	return (
 		<div className="app">
 			<h1 className="title">Resume Builder</h1>
