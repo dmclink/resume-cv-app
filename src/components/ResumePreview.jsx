@@ -10,6 +10,9 @@ import ProfessionalSummarySection from './ProfessionalSummarySection.jsx';
 import ProjectsSection from './ProjectsSection.jsx';
 import PreviewControls from './PreviewControls.jsx';
 
+import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
 function ResumePreview({
 	educationData,
 	personalInfoData,
@@ -43,7 +46,19 @@ function ResumePreview({
 
 	return (
 		<>
-			<PreviewControls handleChange={handleControlsChange} />
+			<Accordion className="Accordion">
+				<AccordionSummary
+					expandIcon={<ExpandMoreIcon className="ExpandMoreIcon" />}
+					aria-controls="panel6-content"
+					id="panel6-header"
+				>
+					<h2 className="input-heading">Preview Style Adjustments</h2>
+				</AccordionSummary>
+				<AccordionDetails>
+					<PreviewControls handleChange={handleControlsChange} />
+				</AccordionDetails>
+			</Accordion>
+
 			<button onClick={reactToPrintFn}>Print</button>
 			<div
 				ref={contentRef}

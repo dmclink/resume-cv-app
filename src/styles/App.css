@@ -86,3 +86,12 @@ form {
 		flex-direction: column;
 	}
 }
+
+.Accordion {
+	color: whitesmoke;
+	background-color: #242424;
+}
+
+.ExpandMoreIcon {
+	stroke: whitesmoke;
+}

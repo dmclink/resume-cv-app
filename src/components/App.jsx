@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { setStateFn, setStateNestedArrayFn, setStateNestedArrayAdd, setStateNestedArrayRemove } from '../utils.jsx';
 import '../styles/App.css';
-import FormField from './FormField.jsx';
 import InfoInputSection from './InfoInputSection.jsx';
 import EducationInputSection from './EducationInputSection.jsx';
 import ExperienceInputSection from './ExperienceInputSection.jsx';
@@ -9,6 +8,9 @@ import ResumePreview from './ResumePreview.jsx';
 import SkillsInputSection from './SkillsInputSection.jsx';
 import ProfessionalSummaryInputSection from './ProfessionalSummaryInputSection.jsx';
 import ProjectsInput from './ProjectsInput.jsx';
+
+import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 function App() {
 	const [professionalSummary, setProfessionalSummary] = useState({
@@ -76,30 +78,97 @@ function App() {
 	return (
 		<div className="app">
 			<h1 className="title">Resume Builder</h1>
-			<h2 className="input-heading">Personal Information</h2>
-			<InfoInputSection handlePersonalInfoChange={handlePersonalInfoChange} />
-			<h2 className="input-heading">Professional Summary</h2>
-			<ProfessionalSummaryInputSection handleChange={handleProfessionalSummaryChange} />
-			<h2 className="input-heading">Personal Projects</h2>
-			<ProjectsInput
-				handleAdd={handleProjectAdd}
-				handleRemove={handleProjectRemove}
-				handleChange={handleProjectChange}
-			/>
-			<h2 className="input-heading">Work Experience</h2>
-			<ExperienceInputSection
-				handleAdd={handleWorkExperienceAdd}
-				handleRemove={handleWorkExperienceRemove}
-				handleChange={handleWorkExperienceChange}
-			/>
-			<h2 className="input-heading">Education Information</h2>
-			<EducationInputSection
-				handleAdd={handleEducationAdd}
-				handleRemove={handleEducationRemove}
-				handleChange={handleEducationChange}
-			/>
-			<h2 className="input-heading">Skills</h2>
-			<SkillsInputSection handleChange={handleSkillsChange} />
+
+			<Accordion className="Accordion">
+				<AccordionSummary
+					expandIcon={<ExpandMoreIcon className="ExpandMoreIcon" />}
+					aria-controls="panel0-content"
+					id="panel0-header"
+				>
+					<h2 className="input-heading">Personal Information</h2>
+				</AccordionSummary>
+				<AccordionDetails>
+					<InfoInputSection handlePersonalInfoChange={handlePersonalInfoChange} />
+				</AccordionDetails>
+			</Accordion>
+
+			<Accordion className="Accordion">
+				<AccordionSummary
+					expandIcon={<ExpandMoreIcon className="ExpandMoreIcon" />}
+					aria-controls="panel1-content"
+					id="panel1-header"
+				>
+					<h2 className="input-heading">Professional Summary</h2>
+				</AccordionSummary>
+				<AccordionDetails>
+					<ProfessionalSummaryInputSection handleChange={handleProfessionalSummaryChange} />
+				</AccordionDetails>
+			</Accordion>
+
+			<Accordion className="Accordion">
+				<AccordionSummary
+					expandIcon={<ExpandMoreIcon className="ExpandMoreIcon" />}
+					aria-controls="panel2-content"
+					id="panel2-header"
+				>
+					<h2 className="input-heading">Personal Projects</h2>
+				</AccordionSummary>
+				<AccordionDetails>
+					<ProjectsInput
+						handleAdd={handleProjectAdd}
+						handleRemove={handleProjectRemove}
+						handleChange={handleProjectChange}
+					/>
+				</AccordionDetails>
+			</Accordion>
+
+			<Accordion className="Accordion">
+				<AccordionSummary
+					expandIcon={<ExpandMoreIcon className="ExpandMoreIcon" />}
+					aria-controls="panel3-content"
+					id="panel3-header"
+				>
+					<h2 className="input-heading">Work Experience</h2>
+				</AccordionSummary>
+				<AccordionDetails>
+					<ExperienceInputSection
+						handleAdd={handleWorkExperienceAdd}
+						handleRemove={handleWorkExperienceRemove}
+						handleChange={handleWorkExperienceChange}
+					/>
+				</AccordionDetails>
+			</Accordion>
+
+			<Accordion className="Accordion">
+				<AccordionSummary
+					expandIcon={<ExpandMoreIcon className="ExpandMoreIcon" />}
+					aria-controls="panel4-content"
+					id="panel4-header"
+				>
+					<h2 className="input-heading">Education Information</h2>
+				</AccordionSummary>
+				<AccordionDetails>
+					<EducationInputSection
+						handleAdd={handleEducationAdd}
+						handleRemove={handleEducationRemove}
+						handleChange={handleEducationChange}
+					/>
+				</AccordionDetails>
+			</Accordion>
+
+			<Accordion className="Accordion">
+				<AccordionSummary
+					expandIcon={<ExpandMoreIcon className="ExpandMoreIcon" />}
+					aria-controls="panel5-content"
+					id="panel5-header"
+				>
+					<h2 className="input-heading">Skills</h2>
+				</AccordionSummary>
+				<AccordionDetails>
+					<SkillsInputSection handleChange={handleSkillsChange} />
+				</AccordionDetails>
+			</Accordion>
+
 			<h2 className="input-heading">Preview</h2>
 			<ResumePreview
 				educationData={educationData}
