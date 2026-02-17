@@ -87,11 +87,11 @@ form {
 	}
 }
 
-.Accordion {
+.Accordion.Accordion {
 	color: whitesmoke;
 	background-color: #242424;
 }
 
-.ExpandMoreIcon {
+.ExpandMoreIcon.ExpandMoreIcon {
 	stroke: whitesmoke;
 }

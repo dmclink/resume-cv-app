@@ -1,5 +1,5 @@
 import '../styles/ResumePreview.css';
-import { useState, useRef } from 'react';
+import { useState, useRef, useLayoutEffect } from 'react';
 import { useReactToPrint } from 'react-to-print';
 
 import PersonalInfoSection from './PersonalInfoSection.jsx';
@@ -43,6 +43,12 @@ function ResumePreview({
 
 	const contentRef = useRef(null);
 	const reactToPrintFn = useReactToPrint({ contentRef });
+
+	// useLayoutEffect(() => {
+	// 	if (contentRef.current) {
+	// 		console.log(contentRef.current.scrollHeight);
+	// 	}
+	// });
 
 	return (
 		<>

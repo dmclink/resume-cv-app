@@ -19,7 +19,8 @@
 
 	@media print {
 		transform: scale(1);
-		height: min-content;
+		padding-bottom: 3.5in;
+		overflow: hidden;
 	}
 }
 
