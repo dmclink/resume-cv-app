@@ -28,7 +28,9 @@ function ProjectsSection({ data }) {
 
 	return (
 		<section id="projects-section" className="projects-section">
-			{data.projects[0].projectName && <h3 className="projects-section-heading">Projects</h3>}
+			{data.projects[0].projectName && data.projectsHeadingText && (
+				<h3 className="projects-section-heading">{data.projectsHeadingText}</h3>
+			)}
 			{projects}
 		</section>
 	);

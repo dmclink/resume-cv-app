@@ -22,6 +22,12 @@ function ProjectsInput({ handleChange, handleAdd, handleRemove }) {
 	return (
 		<>
 			<form className="projects-form" id="projects-form">
+				<FormField
+					defaultValue="Projects"
+					label="Projects Heading Text:"
+					onChange={handleChange}
+					name="projectsHeadingText"
+				/>
 				{projectFields}
 			</form>
 			<button type="button" onClick={increment}>

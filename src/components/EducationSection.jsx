@@ -18,7 +18,9 @@ function EducationSection({ data }) {
 	});
 	return (
 		<section className="education-section">
-			{data.schools[0].schoolName && <h3 className="education-section-heading">Education</h3>}
+			{data.schools[0].schoolName && data.educationHeadingText && (
+				<h3 className="education-section-heading">{data.educationHeadingText}</h3>
+			)}
 			<div className="education-entries">{education}</div>
 		</section>
 	);

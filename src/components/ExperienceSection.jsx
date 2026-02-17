@@ -16,8 +16,8 @@ function ExperienceSection({ data }) {
 
 	return (
 		<section className="work-section">
-			{(data.jobs[0].workTitle || data.jobs[0].workEmployerName) && (
-				<h3 className="work-section-heading">Work Experience</h3>
+			{(data.jobs[0].workTitle || data.jobs[0].workEmployerName) && data.workHeadingText && (
+				<h3 className="work-section-heading">{data.workHeadingText}</h3>
 			)}
 			<div className="work-entries">{work}</div>
 		</section>

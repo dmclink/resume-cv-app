@@ -4,6 +4,12 @@ function SkillsInputSection({ handleChange }) {
 		<>
 			<form className="skills-form" id="skills-form">
 				<FormField
+					label="Skills Heading Text:"
+					name="skillsHeadingText"
+					onChange={handleChange}
+					defaultValue="Skills"
+				/>
+				<FormField
 					label="Skills:"
 					name="skills"
 					id="skills"

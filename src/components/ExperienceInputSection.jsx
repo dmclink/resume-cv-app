@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import FormField from './FormField.jsx';
 import ExperienceInputFields from './ExperienceInputFields.jsx';
 
 function ExperienceInputSection({ handleAdd, handleRemove, handleChange }) {
@@ -21,6 +22,12 @@ function ExperienceInputSection({ handleAdd, handleRemove, handleChange }) {
 	return (
 		<>
 			<form className="work-experience-form" id="work-experience-form">
+				<FormField
+					label="Work Experience Heading Text:"
+					name="workHeadingText"
+					onChange={handleChange}
+					defaultValue="Work Experience"
+				/>
 				{experienceFields}
 			</form>
 			<button type="button" onClick={increment}>

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import EducationInputFields from './EducationInputFields.jsx';
+import FormField from './FormField.jsx';
 
 function EducationInputSection({ handleAdd, handleRemove, handleChange }) {
 	const [count, setCount] = useState(1);
@@ -21,6 +22,12 @@ function EducationInputSection({ handleAdd, handleRemove, handleChange }) {
 	return (
 		<>
 			<form className="education-form" id="education-form">
+				<FormField
+					label="Education Heading Text"
+					defaultValue="Education"
+					onChange={handleChange}
+					name="educationHeadingText"
+				/>
 				{educationFields}
 			</form>
 			<button type="button" onClick={increment}>

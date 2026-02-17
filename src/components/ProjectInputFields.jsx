@@ -2,7 +2,8 @@ import FormField from './FormField';
 
 function ProjectInputFields({ handleChange, i }) {
 	return (
-		<div className="education-input-field">
+		<div className="projects-input-field">
+			<h3>Project {i}</h3>
 			<FormField
 				idx={i - 1}
 				onChange={handleChange}

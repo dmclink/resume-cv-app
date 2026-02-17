@@ -3,8 +3,10 @@ import { buildDescription } from '../utils';
 function ProfessionalSummarySection({ data }) {
 	return (
 		<section className="professional-summary-section">
-			{data && <h3 className="professional-summary-heading">Professional Summary</h3>}
-			<div>{buildDescription(data)}</div>
+			{data.professionalSummary && data.professionalSummaryHeadingText && (
+				<h3 className="professional-summary-heading">{data.professionalSummaryHeadingText}</h3>
+			)}
+			<div>{buildDescription(data.professionalSummary)}</div>
 		</section>
 	);
 }

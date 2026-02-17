@@ -9,12 +9,71 @@ import SkillsInputSection from './SkillsInputSection.jsx';
 import ProfessionalSummaryInputSection from './ProfessionalSummaryInputSection.jsx';
 import ProjectsInput from './ProjectsInput.jsx';
 
+function setStateFn(setFunction) {
+	return function (e) {
+		const name = e.target.name;
+		const v = e.target.value;
+
+		setFunction((prevData) => {
+			const newData = structuredClone(prevData);
+			newData[name] = v;
+			return newData;
+		});
+	};
+}
+
+function setStateNestedArrayFn(setFunction, arrayFieldName) {
+	return function (e) {
+		const name = e.target.name;
+		const v = e.target.value;
+		const idx = Number(e.target.getAttribute('idx'));
+
+		setFunction((prevData) => {
+			const newData = structuredClone(prevData);
+			if (!e.target.getAttribute('idx')) {
+				newData[name] = v;
+				return newData;
+			}
+
+			newData[arrayFieldName][idx][name] = v;
+			return newData;
+		});
+	};
+}
+
+function setStateNestedArrayRemove(setFunction, arrayFieldName) {
+	return function () {
+		setFunction((prevData) => {
+			const newData = structuredClone(prevData);
+			newData[arrayFieldName].pop();
+
+			return newData;
+		});
+	};
+}
+
+function setStateNestedArrayAdd(setFunction, arrayFieldName) {
+	return function () {
+		setFunction((prevData) => {
+			const newData = structuredClone(prevData);
+			newData[arrayFieldName].push({});
+
+			return newData;
+		});
+	};
+}
+
 function App() {
-	const [professionalSummary, setProfessionalSummary] = useState('');
+	const [professionalSummary, setProfessionalSummary] = useState({
+		professionalSummaryHeadingText: 'Professional Summary',
+		professionalSummary: '',
+	});
 	const [projectData, setProjectData] = useState({
+		projectsHeadingText: 'Projects',
 		projects: [{ projectName: '', projectLink: '', projectDescription: '' }],
 	});
 	const [educationData, setEducationData] = useState({
+		educationHeadingText: 'Education',
 		schools: [
 			{
 				schoolName: '',
@@ -27,6 +86,7 @@ function App() {
 		],
 	});
 	const [workData, setWorkData] = useState({
+		workHeadingText: 'Work Experience',
 		jobs: [
 			{
 				workEmployerName: '',
@@ -44,128 +104,27 @@ function App() {
 		linkedin: '',
 		phone: '',
 	});
-	const [skillsData, setSkillsData] = useState('');
+	const [skillsData, setSkillsData] = useState({
+		skillsHeadingText: 'Skills',
+		skills: '',
+	});
 
-	function handlePersonalInfoChange(e) {
-		const v = e.target.value;
-		const name = e.target.name;
+	const handlePersonalInfoChange = setStateFn(setPersonalInfoData);
+	const handleProfessionalSummaryChange = setStateFn(setProfessionalSummary);
 
-		setPersonalInfoData((prevData) => ({ ...prevData, [name]: v }));
-	}
+	const handleWorkExperienceChange = setStateNestedArrayFn(setWorkData, 'jobs');
+	const handleWorkExperienceRemove = setStateNestedArrayRemove(setWorkData, 'jobs');
+	const handleWorkExperienceAdd = setStateNestedArrayAdd(setWorkData, 'jobs');
 
-	function handleWorkExperienceChange(e) {
-		const v = e.target.value;
-		const name = e.target.name;
-		const i = Number(e.target.getAttribute('idx'));
+	const handleProjectChange = setStateNestedArrayFn(setProjectData, 'projects');
+	const handleProjectRemove = setStateNestedArrayRemove(setProjectData, 'projects');
+	const handleProjectAdd = setStateNestedArrayAdd(setProjectData, 'projects');
 
-		setWorkData((prevData) => {
-			const newData = structuredClone(prevData);
-			newData.jobs[i] = { ...newData.jobs[i], [name]: v };
-			return newData;
-		});
-	}
+	const handleEducationChange = setStateNestedArrayFn(setEducationData, 'schools');
+	const handleEducationRemove = setStateNestedArrayRemove(setEducationData, 'schools');
+	const handleEducationAdd = setStateNestedArrayAdd(setEducationData, 'schools');
 
-	function handleWorkExperienceRemove() {
-		setWorkData((prevData) => {
-			const newData = structuredClone(prevData);
-			newData.jobs.pop();
-
-			return newData;
-		});
-	}
-
-	function handleWorkExperienceAdd() {
-		setWorkData((prevData) => {
-			const newData = structuredClone(prevData);
-			newData.jobs.push({});
-
-			return newData;
-		});
-	}
-
-	function handleProjectChange(e) {
-		const name = e.target.name;
-		const v = e.target.value;
-		const idx = Number(e.target.getAttribute('idx'));
-
-		setProjectData((prevData) => {
-			const newData = structuredClone(prevData);
-			newData.projects[idx][name] = v;
-			return newData;
-		});
-	}
-
-	function handleProjectRemove() {
-		setProjectData((prevData) => {
-			const newData = structuredClone(prevData);
-			newData.projects.pop();
-
-			return newData;
-		});
-	}
-
-	function handleProjectAdd() {
-		setProjectData((prevData) => {
-			const newData = structuredClone(prevData);
-			newData.projects.push({});
-
-			return newData;
-		});
-	}
-
-	function handleEducationChange(e) {
-		const name = e.target.name;
-		const v = e.target.value;
-		const idx = Number(e.target.getAttribute('idx'));
-
-		setEducationData((prevData) => {
-			const newData = structuredClone(prevData);
-			newData.schools[idx][name] = v;
-			return newData;
-		});
-	}
-
-	function handleEducationRemove() {
-		setEducationData((prevData) => {
-			const newData = structuredClone(prevData);
-			newData.schools.pop();
-
-			return newData;
-		});
-	}
-
-	function handleEducationAdd() {
-		setEducationData((prevData) => {
-			const newData = structuredClone(prevData);
-			newData.schools.push({});
-
-			return newData;
-		});
-	}
-
-	function handleSkillsChange(e) {
-		const v = e.target.value;
-
-		setSkillsData(v);
-	}
-
-	function handleProfessionalSummaryChange(e) {
-		const v = e.target.value;
-
-		setProfessionalSummary(v);
-	}
-
-	function handlePreviewControlsChange(e) {
-		const v = e.target.value;
-		const name = e.target.name;
-
-		setPreviewConfig((prevData) => {
-			const newData = structuredClone(prevData);
-			newData[name] = v;
-
-			return newData;
-		});
-	}
+	const handleSkillsChange = setStateFn(setSkillsData);
 
 	// TODO: add a projects section similar to work experience but without dates, let add and remove
 	return (
