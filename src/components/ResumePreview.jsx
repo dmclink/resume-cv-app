@@ -60,7 +60,8 @@ function ResumePreview({
 	const contentRef = useRef(null);
 	const reactToPrintFn = useReactToPrint({ contentRef });
 
-	// this creates new pages dynamically after rendering based on the size of the preview content
+	// creates new pages dynamically after rendering based on the size of the preview content
+	// if the content overflows it creates a new page and appends all overflowing children to it
 	useEffect(() => {
 		if (contentRef.current) {
 			const pagesContainer = document.getElementById('preview-pages');
@@ -68,17 +69,60 @@ function ResumePreview({
 
 			for (let idx = 0; idx < pages.length; idx++) {
 				const page = pages[idx];
+				const prevPageContent = page.querySelector('.page-content');
 
 				if (page.scrollHeight > page.clientHeight) {
 					const nextPage = newPage();
 					const nextPageContent = nextPage.querySelector('.page-content');
 					pagesContainer.appendChild(nextPage);
 
+					// pushes all overflowing sections to the next page
 					while (page.scrollHeight > page.clientHeight) {
 						const pageSections = Array.from(page.querySelectorAll('section'));
 
 						const poppedSection = pageSections.pop();
 						nextPageContent.prepend(poppedSection);
+					}
+
+					// try splitting the last section on the first page by articles over both pages
+					const nextPageSection = nextPageContent.querySelector('section');
+					const articles = Array.from(nextPageSection.querySelectorAll('article'));
+					if (articles.length > 1) {
+						articles.forEach((article) => {
+							nextPageSection.removeChild(article);
+						});
+						const prevPageSection = nextPageSection.cloneNode(nextPageSection);
+						prevPageContent.appendChild(prevPageSection);
+						prevPageSection.appendChild(articles[0]);
+
+						// edge case where not even one article fits from section we dont split so
+						// we dont have an extra floating heading for nothing
+						if (page.scrollHeight > page.clientHeight) {
+							prevPageContent.removeChild(prevPageSection);
+							articles.forEach((article) => {
+								nextPageSection.appendChild(article);
+							});
+							break;
+						}
+
+						let targetPrevPage = true;
+
+						for (let i = 1; i < articles.length; i++) {
+							const article = articles[i];
+							if (targetPrevPage) {
+								prevPageSection.appendChild(article);
+								if (page.scrollHeight > page.clientHeight) {
+									nextPageSection.appendChild(article);
+									targetPrevPage = false;
+								}
+							} else {
+								nextPageSection.appendChild(article);
+							}
+						}
+
+						const heading = nextPageSection.querySelector('h3');
+						const headingText = heading.innerText;
+						heading.innerHTML = `${headingText} <span class="heading-continued">cont.</span>`;
 					}
 				}
 			}
@@ -102,6 +146,7 @@ function ResumePreview({
 
 			<button onClick={reactToPrintFn}>Print</button>
 			<div
+				className="preview-pages"
 				id="preview-pages"
 				ref={contentRef}
 				style={{
