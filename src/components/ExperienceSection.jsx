@@ -1,6 +1,23 @@
 import { formatDates, buildDescription } from '../utils.jsx';
 
 function ExperienceSection({ data }) {
+	let hasEntry = false;
+	for (const job of data.jobs) {
+		for (const v of Object.values(job)) {
+			if (v) {
+				hasEntry = true;
+				break;
+			}
+		}
+		if (hasEntry) {
+			break;
+		}
+	}
+
+	if (!hasEntry) {
+		return <></>;
+	}
+
 	const work = data.jobs.map((entry) => {
 		return (
 			<article className="work-entry">
@@ -16,9 +33,7 @@ function ExperienceSection({ data }) {
 
 	return (
 		<section className="work-section">
-			{(data.jobs[0].workTitle || data.jobs[0].workEmployerName) && data.workHeadingText && (
-				<h3 className="work-section-heading">{data.workHeadingText}</h3>
-			)}
+			{hasEntry && data.workHeadingText && <h3 className="work-section-heading">{data.workHeadingText}</h3>}
 			<div className="work-entries">{work}</div>
 		</section>
 	);

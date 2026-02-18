@@ -1,5 +1,5 @@
 import '../styles/ResumePreview.css';
-import { useState, useRef, useLayoutEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useReactToPrint } from 'react-to-print';
 
 import PersonalInfoSection from './PersonalInfoSection.jsx';
@@ -12,6 +12,22 @@ import PreviewControls from './PreviewControls.jsx';
 
 import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
+const PAGE_HEIGHT = 1222;
+const TOP_MARGIN_HEIGHT = 48;
+const MAX_CONTENT_HEIGHT = PAGE_HEIGHT - TOP_MARGIN_HEIGHT * 2;
+
+function newPage() {
+	const page = document.createElement('div');
+	page.classList.add('page');
+
+	const content = document.createElement('div');
+	content.classList.add('page-content');
+
+	page.appendChild(content);
+
+	return page;
+}
 
 function ResumePreview({
 	educationData,
@@ -44,11 +60,30 @@ function ResumePreview({
 	const contentRef = useRef(null);
 	const reactToPrintFn = useReactToPrint({ contentRef });
 
-	// useLayoutEffect(() => {
-	// 	if (contentRef.current) {
-	// 		console.log(contentRef.current.scrollHeight);
-	// 	}
-	// });
+	// this creates new pages dynamically after rendering based on the size of the preview content
+	useEffect(() => {
+		if (contentRef.current) {
+			const pagesContainer = document.getElementById('preview-pages');
+			const pages = Array.from(document.querySelectorAll('.page'));
+
+			for (let idx = 0; idx < pages.length; idx++) {
+				const page = pages[idx];
+
+				if (page.scrollHeight > page.clientHeight) {
+					const nextPage = newPage();
+					const nextPageContent = nextPage.querySelector('.page-content');
+					pagesContainer.appendChild(nextPage);
+
+					while (page.scrollHeight > page.clientHeight) {
+						const pageSections = Array.from(page.querySelectorAll('section'));
+
+						const poppedSection = pageSections.pop();
+						nextPageContent.prepend(poppedSection);
+					}
+				}
+			}
+		}
+	});
 
 	return (
 		<>
@@ -67,8 +102,8 @@ function ResumePreview({
 
 			<button onClick={reactToPrintFn}>Print</button>
 			<div
+				id="preview-pages"
 				ref={contentRef}
-				className="page"
 				style={{
 					'--font-size': previewConfig.fontSize,
 					'--heading-font-size': previewConfig.headingFontSize,
@@ -77,12 +112,16 @@ function ResumePreview({
 					'lineHeight': previewConfig.lineHeight,
 				}}
 			>
-				<PersonalInfoSection data={personalInfoData} />
-				<ProfessionalSummarySection data={professionalSummaryData} />
-				<ProjectsSection data={projectData} />
-				<ExperienceSection data={workData} />
-				<EducationSection data={educationData} />
-				<SkillsSection data={skillsData} />
+				<div className="page">
+					<div className="page-content">
+						<PersonalInfoSection data={personalInfoData} />
+						<ProfessionalSummarySection data={professionalSummaryData} />
+						<ProjectsSection data={projectData} />
+						<ExperienceSection data={workData} />
+						<EducationSection data={educationData} />
+						<SkillsSection data={skillsData} />
+					</div>
+				</div>
 			</div>
 		</>
 	);

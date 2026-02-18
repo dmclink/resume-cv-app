@@ -4,24 +4,29 @@
 }
 
 .page {
+	box-sizing: border-box;
+	height: 11in;
+	width: 8.5in;
+	/* overflow: hidden; */
+
+	font-size: var(--font-size, 12px);
 	font-family: var(--font-family, Arial, Helvetica, Arimo, 'DejaVu Sans', sans-serif);
-	padding-inline: 1in;
-	padding-block: 0.5in;
 	line-height: 1.1;
 	text-align: left;
 	color: black;
+
 	background-color: #fff;
-	height: 11.69in;
-	width: 8.26in;
 	transform-origin: 0 0;
 	transform: scale(0.8);
-	font-size: var(--font-size, 12px);
 
 	@media print {
 		transform: scale(1);
-		padding-bottom: 3.5in;
-		overflow: hidden;
 	}
+}
+
+.page-content {
+	padding-inline: 1in;
+	padding-block: 0.5in;
 }
 
 .personal-info {
@@ -46,7 +51,7 @@
 }
 .work-entry,
 .education-entry {
-	margin-bottom: 0.6rem;
+	padding-bottom: 0.6rem;
 }
 .work-header,
 .education-header {
@@ -78,5 +83,5 @@
 }
 
 section {
-	margin-bottom: 0.5rem;
+	padding-bottom: 0.5rem;
 }

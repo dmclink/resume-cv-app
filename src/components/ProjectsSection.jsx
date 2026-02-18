@@ -26,11 +26,13 @@ function ProjectsSection({ data }) {
 		);
 	}
 
+	if (!projects.length) {
+		return <></>;
+	}
+
 	return (
 		<section id="projects-section" className="projects-section">
-			{data.projects[0].projectName && data.projectsHeadingText && (
-				<h3 className="projects-section-heading">{data.projectsHeadingText}</h3>
-			)}
+			{data.projectsHeadingText && <h3 className="projects-section-heading">{data.projectsHeadingText}</h3>}
 			{projects}
 		</section>
 	);

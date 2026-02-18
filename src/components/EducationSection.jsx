@@ -1,6 +1,22 @@
 import { formatDates, buildDescription } from '../utils.jsx';
 
 function EducationSection({ data }) {
+	let hasEntry = false;
+	for (const school of data.schools) {
+		for (const v of Object.values(school)) {
+			if (v) {
+				hasEntry = true;
+				break;
+			}
+		}
+		if (hasEntry) {
+			break;
+		}
+	}
+
+	if (!hasEntry) {
+		return <></>;
+	}
 	const education = data.schools.map((entry) => {
 		return (
 			<article className="education-entry">
@@ -16,6 +32,7 @@ function EducationSection({ data }) {
 			</article>
 		);
 	});
+
 	return (
 		<section className="education-section">
 			{data.schools[0].schoolName && data.educationHeadingText && (
