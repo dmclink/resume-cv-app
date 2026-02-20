@@ -1,12 +1,6 @@
 import '../styles/ResumePreview.css';
 import { formatDates, buildDescription } from '../utils.jsx';
 
-import PersonalInfoSection from './PersonalInfoSection.jsx';
-import ExperienceSection from './ExperienceSection.jsx';
-import EducationSection from './EducationSection.jsx';
-import SkillsSection from './SkillsSection.jsx';
-import ProfessionalSummarySection from './ProfessionalSummarySection.jsx';
-import ProjectsSection from './ProjectsSection.jsx';
 import PreviewControls from './PreviewControls.jsx';
 import PreviewHeading from './PreviewHeading.jsx';
 
