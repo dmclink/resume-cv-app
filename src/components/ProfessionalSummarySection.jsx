@@ -10,7 +10,7 @@ function ProfessionalSummarySection({ data }) {
 			{data.professionalSummaryHeadingText && (
 				<h3 className="professional-summary-heading">{data.professionalSummaryHeadingText}</h3>
 			)}
-			<div>{buildDescription(data.professionalSummary)}</div>
+			<article>{buildDescription(data.professionalSummary)}</article>
 		</section>
 	);
 }

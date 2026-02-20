@@ -18,10 +18,6 @@
 	background-color: #fff;
 }
 
-.page article {
-	margin-top: 0.5rem;
-}
-
 .preview-pages {
 	display: flex;
 	flex-direction: column;
@@ -49,7 +45,8 @@
 .education-section-heading,
 .skills-section-heading,
 .professional-summary-heading,
-.projects-section-heading {
+.projects-section-heading,
+.preview-heading {
 	font-family: var(--heading-font-family, Arial, Helvetica, Arimo, 'DejaVu Sans', sans-serif);
 	font-size: var(--heading-font-size, 12px);
 	width: 100%;
@@ -91,11 +88,20 @@
 	font-style: italic;
 }
 
-.page section {
+.page h3 {
+	padding-bottom: 0.2rem;
+}
+
+.page article {
 	padding-bottom: 0.5rem;
 }
 
 .heading-continued {
 	font-weight: normal;
 	font-style: italic;
+}
+
+.offscreen {
+	position: absolute;
+	left: -99999px;
 }

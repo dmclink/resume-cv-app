@@ -8,7 +8,7 @@ function SkillsSection({ data }) {
 	return (
 		<section className="skills-section">
 			{data.skillsHeadingText && <h3 className="skills-section-heading">{data.skillsHeadingText}</h3>}
-			<div className="skills=description">{buildDescription(data.skills)}</div>
+			<article className="skills-description">{buildDescription(data.skills)}</article>
 		</section>
 	);
 }

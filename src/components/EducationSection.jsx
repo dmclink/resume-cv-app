@@ -38,7 +38,7 @@ function EducationSection({ data }) {
 			{data.schools[0].schoolName && data.educationHeadingText && (
 				<h3 className="education-section-heading">{data.educationHeadingText}</h3>
 			)}
-			<div className="education-entries">{education}</div>
+			{education}
 		</section>
 	);
 }

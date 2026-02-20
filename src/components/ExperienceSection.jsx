@@ -1,6 +1,6 @@
 import { formatDates, buildDescription } from '../utils.jsx';
 
-function ExperienceSection({ data }) {
+function ExperienceSection({ data, ref }) {
 	let hasEntry = false;
 	for (const job of data.jobs) {
 		for (const v of Object.values(job)) {
@@ -32,9 +32,9 @@ function ExperienceSection({ data }) {
 	});
 
 	return (
-		<section className="work-section">
+		<section ref={ref} className="work-section">
 			{hasEntry && data.workHeadingText && <h3 className="work-section-heading">{data.workHeadingText}</h3>}
-			<div className="work-entries">{work}</div>
+			{work}
 		</section>
 	);
 }
