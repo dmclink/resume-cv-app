@@ -233,7 +233,9 @@ function ResumePreview({
 				</AccordionDetails>
 			</Accordion>
 
-			<button onClick={reactToPrintFn}>Print</button>
+			<button className="print-button" onClick={reactToPrintFn}>
+				Print
+			</button>
 
 			<div className="offscreen page" id="page-clone">
 				<div className="page-content">

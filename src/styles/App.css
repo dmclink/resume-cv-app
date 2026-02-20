@@ -63,8 +63,6 @@ h6 {
 }
 
 .app {
-	margin: 0 auto;
-	max-width: 70ch;
 }
 
 .input-heading,
@@ -94,4 +92,20 @@ form {
 
 .ExpandMoreIcon.ExpandMoreIcon {
 	stroke: whitesmoke;
+}
+
+.layout-grid {
+	display: grid;
+	grid-template-columns: repeat(1, 70ch);
+	margin: 0 auto;
+	max-width: 70ch;
+
+	@media (min-width: 1250px) {
+		grid-template-columns: 70ch 1fr;
+		max-width: unset;
+	}
+	@media (min-width: 1600px) {
+		grid-template-columns: 90ch 1fr;
+		max-width: unset;
+	}
 }

@@ -3,6 +3,26 @@
 	font-size: 2rem;
 }
 
+.preview-pages {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	transform-origin: 0 0;
+	transform: scale(0.8);
+
+	@media (min-width: 1250px) {
+		margin: 0 auto;
+	}
+
+	@media (min-width: 1600px) {
+		transform: scale(1);
+	}
+
+	@media print {
+		transform: scale(1);
+	}
+}
+
 .page {
 	box-sizing: border-box;
 	height: 11in;
@@ -15,18 +35,11 @@
 	text-align: left;
 	color: black;
 
-	background-color: #fff;
-}
-
-.preview-pages {
-	display: flex;
-	flex-direction: column;
-	gap: 1rem;
-	transform-origin: 0 0;
-	transform: scale(0.8);
-	@media print {
-		transform: scale(1);
+	@media (min-width: 1250px) {
+		margin: 0 auto;
 	}
+
+	background-color: #fff;
 }
 
 .page-content {
@@ -104,4 +117,9 @@
 .offscreen {
 	position: absolute;
 	left: -99999px;
+}
+
+.print-button {
+	display: block;
+	margin: 1rem auto;
 }

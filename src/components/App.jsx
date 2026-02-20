@@ -77,108 +77,114 @@ function App() {
 
 	return (
 		<div className="app">
-			<h1 className="title">Resume Builder</h1>
+			<h1 className="title">Resume Generator</h1>
 
-			<Accordion className="Accordion">
-				<AccordionSummary
-					expandIcon={<ExpandMoreIcon className="ExpandMoreIcon" />}
-					aria-controls="panel0-content"
-					id="panel0-header"
-				>
-					<h2 className="input-heading">Personal Information</h2>
-				</AccordionSummary>
-				<AccordionDetails>
-					<InfoInputSection handlePersonalInfoChange={handlePersonalInfoChange} />
-				</AccordionDetails>
-			</Accordion>
+			<div className="layout-grid">
+				<div className="input-forms">
+					<h2 className="input-heading">Input Forms</h2>
+					<Accordion className="Accordion">
+						<AccordionSummary
+							expandIcon={<ExpandMoreIcon className="ExpandMoreIcon" />}
+							aria-controls="panel0-content"
+							id="panel0-header"
+						>
+							<h2 className="input-heading">Personal Information</h2>
+						</AccordionSummary>
+						<AccordionDetails>
+							<InfoInputSection handlePersonalInfoChange={handlePersonalInfoChange} />
+						</AccordionDetails>
+					</Accordion>
 
-			<Accordion className="Accordion">
-				<AccordionSummary
-					expandIcon={<ExpandMoreIcon className="ExpandMoreIcon" />}
-					aria-controls="panel1-content"
-					id="panel1-header"
-				>
-					<h2 className="input-heading">Professional Summary</h2>
-				</AccordionSummary>
-				<AccordionDetails>
-					<ProfessionalSummaryInputSection handleChange={handleProfessionalSummaryChange} />
-				</AccordionDetails>
-			</Accordion>
+					<Accordion className="Accordion">
+						<AccordionSummary
+							expandIcon={<ExpandMoreIcon className="ExpandMoreIcon" />}
+							aria-controls="panel1-content"
+							id="panel1-header"
+						>
+							<h2 className="input-heading">Professional Summary</h2>
+						</AccordionSummary>
+						<AccordionDetails>
+							<ProfessionalSummaryInputSection handleChange={handleProfessionalSummaryChange} />
+						</AccordionDetails>
+					</Accordion>
 
-			<Accordion className="Accordion">
-				<AccordionSummary
-					expandIcon={<ExpandMoreIcon className="ExpandMoreIcon" />}
-					aria-controls="panel2-content"
-					id="panel2-header"
-				>
-					<h2 className="input-heading">Personal Projects</h2>
-				</AccordionSummary>
-				<AccordionDetails>
-					<ProjectsInput
-						handleAdd={handleProjectAdd}
-						handleRemove={handleProjectRemove}
-						handleChange={handleProjectChange}
+					<Accordion className="Accordion">
+						<AccordionSummary
+							expandIcon={<ExpandMoreIcon className="ExpandMoreIcon" />}
+							aria-controls="panel2-content"
+							id="panel2-header"
+						>
+							<h2 className="input-heading">Personal Projects</h2>
+						</AccordionSummary>
+						<AccordionDetails>
+							<ProjectsInput
+								handleAdd={handleProjectAdd}
+								handleRemove={handleProjectRemove}
+								handleChange={handleProjectChange}
+							/>
+						</AccordionDetails>
+					</Accordion>
+
+					<Accordion className="Accordion">
+						<AccordionSummary
+							expandIcon={<ExpandMoreIcon className="ExpandMoreIcon" />}
+							aria-controls="panel3-content"
+							id="panel3-header"
+						>
+							<h2 className="input-heading">Work Experience</h2>
+						</AccordionSummary>
+						<AccordionDetails>
+							<ExperienceInputSection
+								handleAdd={handleWorkExperienceAdd}
+								handleRemove={handleWorkExperienceRemove}
+								handleChange={handleWorkExperienceChange}
+							/>
+						</AccordionDetails>
+					</Accordion>
+
+					<Accordion className="Accordion">
+						<AccordionSummary
+							expandIcon={<ExpandMoreIcon className="ExpandMoreIcon" />}
+							aria-controls="panel4-content"
+							id="panel4-header"
+						>
+							<h2 className="input-heading">Education Information</h2>
+						</AccordionSummary>
+						<AccordionDetails>
+							<EducationInputSection
+								handleAdd={handleEducationAdd}
+								handleRemove={handleEducationRemove}
+								handleChange={handleEducationChange}
+							/>
+						</AccordionDetails>
+					</Accordion>
+
+					<Accordion className="Accordion">
+						<AccordionSummary
+							expandIcon={<ExpandMoreIcon className="ExpandMoreIcon" />}
+							aria-controls="panel5-content"
+							id="panel5-header"
+						>
+							<h2 className="input-heading">Skills</h2>
+						</AccordionSummary>
+						<AccordionDetails>
+							<SkillsInputSection handleChange={handleSkillsChange} />
+						</AccordionDetails>
+					</Accordion>
+				</div>
+				<div className="preview">
+					<h2 className="input-heading">Preview</h2>
+					<ResumePreview
+						educationData={educationData}
+						personalInfoData={personalInfoData}
+						workData={workData}
+						skillsData={skillsData}
+						professionalSummaryData={professionalSummary}
+						projectData={projectData}
+						className="resume-preview"
 					/>
-				</AccordionDetails>
-			</Accordion>
-
-			<Accordion className="Accordion">
-				<AccordionSummary
-					expandIcon={<ExpandMoreIcon className="ExpandMoreIcon" />}
-					aria-controls="panel3-content"
-					id="panel3-header"
-				>
-					<h2 className="input-heading">Work Experience</h2>
-				</AccordionSummary>
-				<AccordionDetails>
-					<ExperienceInputSection
-						handleAdd={handleWorkExperienceAdd}
-						handleRemove={handleWorkExperienceRemove}
-						handleChange={handleWorkExperienceChange}
-					/>
-				</AccordionDetails>
-			</Accordion>
-
-			<Accordion className="Accordion">
-				<AccordionSummary
-					expandIcon={<ExpandMoreIcon className="ExpandMoreIcon" />}
-					aria-controls="panel4-content"
-					id="panel4-header"
-				>
-					<h2 className="input-heading">Education Information</h2>
-				</AccordionSummary>
-				<AccordionDetails>
-					<EducationInputSection
-						handleAdd={handleEducationAdd}
-						handleRemove={handleEducationRemove}
-						handleChange={handleEducationChange}
-					/>
-				</AccordionDetails>
-			</Accordion>
-
-			<Accordion className="Accordion">
-				<AccordionSummary
-					expandIcon={<ExpandMoreIcon className="ExpandMoreIcon" />}
-					aria-controls="panel5-content"
-					id="panel5-header"
-				>
-					<h2 className="input-heading">Skills</h2>
-				</AccordionSummary>
-				<AccordionDetails>
-					<SkillsInputSection handleChange={handleSkillsChange} />
-				</AccordionDetails>
-			</Accordion>
-
-			<h2 className="input-heading">Preview</h2>
-			<ResumePreview
-				educationData={educationData}
-				personalInfoData={personalInfoData}
-				workData={workData}
-				skillsData={skillsData}
-				professionalSummaryData={professionalSummary}
-				projectData={projectData}
-				className="resume-preview"
-			/>
+				</div>
+			</div>
 		</div>
 	);
 }
