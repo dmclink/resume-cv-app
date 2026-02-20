@@ -16,7 +16,7 @@ function ExperienceInputSection({ handleAdd, handleRemove, handleChange }) {
 	}
 
 	for (let i = 0; i < count; i++) {
-		experienceFields.push(<ExperienceInputFields i={i + 1} handleChange={handleChange} />);
+		experienceFields.push(<ExperienceInputFields key={i} i={i + 1} handleChange={handleChange} />);
 	}
 
 	return (

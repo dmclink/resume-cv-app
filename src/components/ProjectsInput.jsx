@@ -16,7 +16,7 @@ function ProjectsInput({ handleChange, handleAdd, handleRemove }) {
 	}
 
 	for (let i = 0; i < count; i++) {
-		projectFields.push(<ProjectInputFields handleChange={handleChange} i={i + 1} />);
+		projectFields.push(<ProjectInputFields key={i} handleChange={handleChange} i={i + 1} />);
 	}
 
 	return (

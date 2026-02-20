@@ -16,7 +16,7 @@ function EducationInputSection({ handleAdd, handleRemove, handleChange }) {
 	}
 
 	for (let i = 0; i < count; i++) {
-		educationFields.push(<EducationInputFields handleChange={handleChange} i={i + 1} />);
+		educationFields.push(<EducationInputFields key={i} handleChange={handleChange} i={i + 1} />);
 	}
 
 	return (

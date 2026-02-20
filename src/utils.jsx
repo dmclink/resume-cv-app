@@ -28,7 +28,7 @@ function buildDescription(text) {
 		const isLI = str.startsWith('-');
 
 		if (!prevIsList && !isLI) {
-			result.push(<p>{str}</p>);
+			result.push(<p key={i}>{str}</p>);
 			continue;
 		}
 

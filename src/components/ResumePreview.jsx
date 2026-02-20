@@ -286,9 +286,9 @@ function ResumePreview({
 					'lineHeight': previewConfig.lineHeight,
 				}}
 			>
-				{pages.map((pageContents) => {
+				{pages.map((pageContents, idx) => {
 					return (
-						<div className="page">
+						<div key={idx} className="page">
 							<div className="page-content">{pageContents}</div>
 						</div>
 					);
@@ -302,7 +302,7 @@ function newPersonalInfoHeading(data, ref) {
 	if (!data.name) {
 		return null;
 	}
-	return <PreviewHeading ref={ref} className="full-name" text={data.name} />;
+	return <PreviewHeading key={crypto.randomUUID()} ref={ref} className="full-name" text={data.name} />;
 }
 
 function newPersonalInfoArticle(data, ref) {
@@ -312,19 +312,20 @@ function newPersonalInfoArticle(data, ref) {
 	data.github && personalInfo.push({ info: data.github, isLink: true });
 	data.linkedin && personalInfo.push({ info: data.linkedin, isLink: true });
 	data.phone && personalInfo.push({ info: data.phone, isLink: false });
+	const key = crypto.randomUUID();
 	return (
-		<article ref={ref} className="personal-info">
+		<article key={key} ref={ref} className="personal-info">
 			{personalInfo.map((entry, idx) => {
 				const pipe = idx < personalInfo.length - 1 ? ' | ' : '';
 				if (entry.isLink) {
 					return (
-						<p>
+						<p key={idx}>
 							<a href={entry.isMail ? 'mailto:' + entry.info : entry.info}>{entry.info}</a>
 							{pipe}
 						</p>
 					);
 				}
-				return <p>{entry.info + pipe}</p>;
+				return <p key={crypto.randomUUID()}>{entry.info + pipe}</p>;
 			})}
 		</article>
 	);
@@ -335,7 +336,7 @@ function newProfessionalSummaryHeading(data, ref) {
 		return null;
 	}
 
-	return <PreviewHeading ref={ref} text={data.professionalSummaryHeadingText} />;
+	return <PreviewHeading key={crypto.randomUUID()} ref={ref} text={data.professionalSummaryHeadingText} />;
 }
 
 function newProfessionalSummaryArticle(data, ref) {
@@ -343,7 +344,11 @@ function newProfessionalSummaryArticle(data, ref) {
 		return null;
 	}
 
-	return <article ref={ref}>{buildDescription(data.professionalSummary)}</article>;
+	return (
+		<article key={crypto.randomUUID()} ref={ref}>
+			{buildDescription(data.professionalSummary)}
+		</article>
+	);
 }
 
 function newProjectsHeading(data, ref) {
@@ -363,7 +368,7 @@ function newProjectsHeading(data, ref) {
 		return null;
 	}
 
-	return <PreviewHeading ref={ref} text={data.projectsHeadingText} />;
+	return <PreviewHeading key={crypto.randomUUID()} ref={ref} text={data.projectsHeadingText} />;
 }
 
 function newProjectsArticles(data, refs) {
@@ -375,7 +380,11 @@ function newProjectsArticles(data, refs) {
 		}
 
 		projects.push(
-			<article ref={(node) => (refs ? (refs.current[i] = node) : null)} className="project-entry">
+			<article
+				key={crypto.randomUUID()}
+				ref={(node) => (refs ? (refs.current[i] = node) : null)}
+				className="project-entry"
+			>
 				<header className="project-header">
 					<p className="project-name">
 						<span className="project-name-span">{project.projectName}</span>
@@ -414,7 +423,7 @@ function newExperienceHeading(data, ref) {
 	if (!experienceHasEntry(data)) {
 		return null;
 	}
-	return <PreviewHeading ref={ref} text={data.workHeadingText} />;
+	return <PreviewHeading key={crypto.randomUUID()} ref={ref} text={data.workHeadingText} />;
 }
 
 function newExperienceArticles(data, refs) {
@@ -424,7 +433,11 @@ function newExperienceArticles(data, refs) {
 
 	return data.jobs.map((entry, idx) => {
 		return (
-			<article ref={(node) => (refs ? (refs.current[idx] = node) : null)} className="work-entry">
+			<article
+				key={crypto.randomUUID()}
+				ref={(node) => (refs ? (refs.current[idx] = node) : null)}
+				className="work-entry"
+			>
 				<header className="work-header">
 					<h4 className="work-employer-name">{entry.workEmployerName}</h4>
 					<p className="work-title">{entry.workTitle}</p>
@@ -452,7 +465,7 @@ function newEducationHeading(data, ref) {
 	if (!educationHasEntry(data)) {
 		return null;
 	}
-	return <PreviewHeading ref={ref} text={data.educationHeadingText} />;
+	return <PreviewHeading key={crypto.randomUUID()} ref={ref} text={data.educationHeadingText} />;
 }
 
 function newEducationArticles(data, refs) {
@@ -462,7 +475,11 @@ function newEducationArticles(data, refs) {
 
 	return data.schools.map((entry, idx) => {
 		return (
-			<article ref={refs ? (node) => (refs.current[idx] = node) : null} className="education-entry">
+			<article
+				key={crypto.randomUUID()}
+				ref={refs ? (node) => (refs.current[idx] = node) : null}
+				className="education-entry"
+			>
 				<header className="education-header">
 					<h4 className="education-school-name">{entry.schoolName}</h4>
 					<p className="education-degree">
@@ -481,7 +498,7 @@ function newSkillsHeading(data, ref) {
 	if (!data.skills) {
 		return null;
 	}
-	return <PreviewHeading text={data.skillsHeadingText} ref={ref} />;
+	return <PreviewHeading key={crypto.randomUUID()} text={data.skillsHeadingText} ref={ref} />;
 }
 
 function newSkillsArticle(data, ref) {
@@ -489,7 +506,7 @@ function newSkillsArticle(data, ref) {
 		return null;
 	}
 	return (
-		<article ref={ref} className="skills-description">
+		<article key={crypto.randomUUID()} ref={ref} className="skills-description">
 			{buildDescription(data.skills)}
 		</article>
 	);
