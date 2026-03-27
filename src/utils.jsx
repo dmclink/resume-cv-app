@@ -1,3 +1,5 @@
+import Markdown from 'marked-react';
+
 function formatDates(dateFrom, dateTo) {
 	if (!dateFrom || !dateTo) {
 		return '';
@@ -18,38 +20,8 @@ function buildDescription(text) {
 	if (!text) {
 		return '';
 	}
-	const fields = text.split('\n');
 
-	const result = [];
-	let prevIsList = false;
-	let list = [];
-	for (let i = 0; i < fields.length; i++) {
-		const str = fields[i];
-		const isLI = str.startsWith('-');
-
-		if (!prevIsList && !isLI) {
-			result.push(<p key={i}>{str}</p>);
-			continue;
-		}
-
-		if (!isLI) {
-			result.push(<ul>{list}</ul>);
-			result.push(<p>{str}</p>);
-			prevIsList = false;
-			list = [];
-		}
-
-		if (isLI) {
-			list.push(<li>{str.slice(1).trim()}</li>);
-			prevIsList = true;
-			continue;
-		}
-	}
-	if (list.length > 0) {
-		result.push(<ul>{list}</ul>);
-	}
-
-	return result;
+	return <Markdown>{text}</Markdown>;
 }
 
 function setStateFn(setFunction) {
