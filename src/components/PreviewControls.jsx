@@ -51,6 +51,14 @@ function PreviewControls({ handleChange }) {
 				</select>
 			</label>
 			<FormField
+				name="headingMarginBottom"
+				label="Heading Margin Bottom (px):"
+				type="number"
+				step="1"
+				defaultValue="0"
+				onChange={handleChange}
+			/>
+			<FormField
 				name="lineHeight"
 				label="Line Height:"
 				type="number"

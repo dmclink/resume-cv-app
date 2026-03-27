@@ -27,6 +27,7 @@ function ResumePreview({
 		fontFamily: 'Arial, Helvetica, sans-serif',
 		headingFontFamily: 'Arial, Helvetica, sans-serif',
 		lineHeight: '1.1',
+		headingMarginBottom: '0',
 	});
 
 	// console.log({ sections, sectionHeights, headings, headingHeights, articles, articleHeights });
@@ -286,6 +287,7 @@ function ResumePreview({
 					'--font-family': previewConfig.fontFamily,
 					'--heading-font-family': previewConfig.headingFontFamily,
 					'--line-height': previewConfig.lineHeight,
+					'--heading-margin-bottom': previewConfig.headingMarginBottom + 'px',
 				}}
 			>
 				{pages.map((pageContents, idx) => {

@@ -64,6 +64,7 @@
 	font-size: var(--heading-font-size, 12px);
 	width: 100%;
 	border-bottom: 1px solid black;
+	margin-bottom: var(--heading-margin-bottom, 0px);
 	&::first-letter {
 		font-size: 1.1em;
 	}
