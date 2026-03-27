@@ -31,7 +31,7 @@
 
 	font-size: var(--font-size, 12px);
 	font-family: var(--font-family, Arial, Helvetica, Arimo, 'DejaVu Sans', sans-serif);
-	line-height: 1.1;
+	line-height: var(--line-height);
 	text-align: left;
 	color: black;
 

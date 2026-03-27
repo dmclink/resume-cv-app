@@ -285,7 +285,7 @@ function ResumePreview({
 					'--heading-font-size': previewConfig.headingFontSize,
 					'--font-family': previewConfig.fontFamily,
 					'--heading-font-family': previewConfig.headingFontFamily,
-					'lineHeight': previewConfig.lineHeight,
+					'--line-height': previewConfig.lineHeight,
 				}}
 			>
 				{pages.map((pageContents, idx) => {
