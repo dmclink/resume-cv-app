@@ -66,6 +66,19 @@ function PreviewControls({ handleChange }) {
 				defaultValue="1.1"
 				onChange={handleChange}
 			/>
+			<label>
+				Use custom list indentation
+				<input type="checkbox" name="useCustomIndentation" onChange={handleChange} />
+			</label>
+
+			<FormField
+				name="listIndentation"
+				label="Custom List Indentation (px):"
+				type="number"
+				step="1"
+				defaultValue="0"
+				onChange={handleChange}
+			/>
 		</form>
 	);
 }

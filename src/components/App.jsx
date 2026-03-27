@@ -77,7 +77,7 @@ function App() {
 
 	return (
 		<div className="app">
-			<h1 className="title">Resume Generator</h1>
+			<h1 className="title">Resume Formatter</h1>
 
 			<div className="layout-grid">
 				<div className="input-forms">

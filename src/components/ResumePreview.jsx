@@ -32,7 +32,7 @@ function ResumePreview({
 
 	// console.log({ sections, sectionHeights, headings, headingHeights, articles, articleHeights });
 	function handleControlsChange(e) {
-		const v = e.target.value;
+		const v = e.target.type === 'checkbox' ? e.target.checked : e.target.value;
 		const name = e.target.name;
 
 		setPreviewConfig((prevData) => {
@@ -288,6 +288,10 @@ function ResumePreview({
 					'--heading-font-family': previewConfig.headingFontFamily,
 					'--line-height': previewConfig.lineHeight,
 					'--heading-margin-bottom': previewConfig.headingMarginBottom + 'px',
+					'--list-position': previewConfig.useCustomIndentation ? 'inside' : 'outside',
+					'--list-indentation': previewConfig.useCustomIndentation
+						? previewConfig.listIndentation + 'px'
+						: '40px',
 				}}
 			>
 				{pages.map((pageContents, idx) => {

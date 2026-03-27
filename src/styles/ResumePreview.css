@@ -110,6 +110,11 @@
 	padding-bottom: 0.5rem;
 }
 
+.page ul {
+	list-style-position: var(--list-position);
+	padding-inline-start: var(--list-indentation);
+}
+
 .heading-continued {
 	font-weight: normal;
 	font-style: italic;
